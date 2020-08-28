@@ -111,7 +111,6 @@ func Execute(awsc aws.Clients) DeployHandler {
 func ReleaseLock(awsc aws.Clients) DeployHandler {
 	return func(ctx context.Context, release *Release) (*Release, error) {
 		err := release.UnlockRoot(
-			awsc.S3(release.AwsRegion, nil, nil),
 			dynamodb.NewDynamoDBLocker(awsc.DynamoDBClient(nil, nil, nil)),
 			getLockTableNameFromContext(ctx, "-locks"),
 		)
