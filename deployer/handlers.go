@@ -110,7 +110,7 @@ func Execute(awsc aws.Clients) DeployHandler {
 // ReleaseLock releases lock with success
 func ReleaseLock(awsc aws.Clients) DeployHandler {
 	return func(ctx context.Context, release *Release) (*Release, error) {
-		fmt.Printf("Banana!")
+		fmt.Println("Banana ReleaseLock")
 		err := release.UnlockRoot(
 			dynamodb.NewDynamoDBLocker(awsc.DynamoDBClient(nil, nil, nil)),
 			getLockTableNameFromContext(ctx, "-locks"),
