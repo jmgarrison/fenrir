@@ -118,7 +118,7 @@ func ReleaseLock(awsc aws.Clients) DeployHandler {
 		if err != nil {
 			return nil, &errors.LockError{Cause: err.Error()}
 		} else {
-			return nil, &errors.LockError{Cause: fmt.Errorf("Ohai")}
+			return nil, &errors.LockError{Cause: fmt.Errorf("Ohai").Error()}
 		}
 	}
 }
